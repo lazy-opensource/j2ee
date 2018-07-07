@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="admin" namespace="/sysback" extends="globalPackage">
+        <action name="index" method="index" class="com.j2ee.admin.action.index.IndexAction">
+            <result name="success" type="freemarker">/WEB-INF/view/index.ftl</result>
+        </action>
+    </package>
+</struts>

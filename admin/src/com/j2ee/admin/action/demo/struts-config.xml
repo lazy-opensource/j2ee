@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="demo" namespace="/sysback/demo" extends="json-default,globalPackage">
+        <action name="*" method="{1}" class="com.j2ee.admin.action.demo.DemoAction">
+            <result name="list" type="freemarker">/WEB-INF/view/demo/{1}.ftl</result>
+            <result name="query" type="json">
+                <param name="root">responseMap</param>
+            </result>
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+            <result name="edit" type="json">
+                <param name="root">entity</param>
+            </result>
+            <result name="input">/WEB-INF/view/error.jsp</result>
+        </action>
+    </package>
+</struts>

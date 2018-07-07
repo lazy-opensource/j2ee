@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+        <!--struts.xml文件通常放在Web应用的WEB-INF/classes路径下。
+        实际上，只要将该文件放在Web应用的CLASSPATH路径下，Struts 2框架就可以加载该文件。-->
+<struts>
+
+    <package name="globalPackage" namespace="/" extends="struts-default">
+
+        <!--配置全局异常页面 /WEB-INF/jsp/error.jsp-->
+        <global-results>
+            <result name="error">/WEB-INF/view/error.jsp</result>
+        </global-results>
+
+        <!--
+        配置全局异常类型 java.lang.Exception
+        在 global-exception-mappings 元素下声明的任何 exception-mapping
+           元素只能引用在 global-results 元素下声明的某个 result 元素
+        -->
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+
+    </package>
+
+    <!--Add actions xml here-->
+    <!--demo-->
+    <include file="com/j2ee/admin/action/demo/struts-config.xml"></include>
+    <!--index-->
+    <include file="com/j2ee/admin/action/index/struts-config.xml"></include>
+
+    <!-- 打印出详细错误信息，方便开发用 -->
+    <constant name="struts.devMode" value="true" />
+    <!-- /static 为存放静态资源的路径，意为不拦截对此文件夹下文件的请求 -->
+    <constant name="struts.action.excludePattern" value="/static/.*" />
+    <!-- 该属性指定需要Struts2处理的请求后缀，该属性的默认值是action，即所有匹配*.action的请求都由Struts2处理。
+        如果用户需要指定多个请求后缀，则多个后缀之间以英文逗号（,）隔开。 -->
+    <!--    <constant name="struts.action.extension" value="do,action" />-->
+    <!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 -->
+    <constant name="struts.serve.static.browserCache" value="false" />
+    <!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+    <constant name="struts.configuration.xml.reload" value="true" />
+    <constant name="struts.ui.theme" value="simple" />
+</struts>
